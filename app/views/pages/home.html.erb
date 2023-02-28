@@ -2,9 +2,9 @@
   <div class="container">
     <h1>Foryou</h1>
     <p>Babysitting, bricolage jardinage, traiteur, dogsitting... for you !</p>
-    <a class="btn btn-flat" href="#">Book now</a>
+    <%= link_to 'Book now', offers_path, class: 'btn btn-flat' %>
   </div>
-  
+
 </div>
 
 <div class="bg-white">
@@ -20,7 +20,7 @@
             <p>J'entretiens votre jardin ainsi que vos plantes</p>
           </div>
           <h2 class="card-offer-pricing">25€/h</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
         </div>
       </div>
       <div class="card-offer">
@@ -31,7 +31,7 @@
             <p>Je répare tout !</p>
           </div>
           <h2 class="card-offer-pricing">50€/h</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
         </div>
       </div>
       <div class="card-offer">
@@ -42,7 +42,7 @@
             <p>Je cuisine rien que pour vous.</p>
           </div>
           <h2 class="card-offer-pricing">80€/h</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
         </div>
       </div>
     </div>
