@@ -3,7 +3,7 @@ class OffersController < ApplicationController
 
   def index
     @offers = Offer.all
-    @offers = policy_scope(Offer)
+    # @offers = policy_scope(Offer)
   end
 
   def show
@@ -32,8 +32,6 @@ class OffersController < ApplicationController
     redirect_to offers_path
     authorize @offer
   end
-
-
 
   private
 
