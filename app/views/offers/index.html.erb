@@ -1,0 +1,23 @@
+<% Offer.all do |offer| %>
+  <div class="cards p-5">
+    <div class="card-offer">
+      <img src="https://images.pexels.com/photos/4505166/pexels-photo-4505166.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+      <div class="card-offer-infos">
+        <div>
+          <h2>Jardinage</h2>
+          <p>J'entretiens votre jardin ainsi que vos plantes</p>
+        </div>
+        <h2 class="card-offer-pricing">25€/h</h2>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+      </div>
+    </div>
+  </div>
+
+<%= simple_form_for :search, url: root_path, method: :get do |f| %>
+  <div class="search-form-control form-group">
+    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+    <button name="button" type="submit" class="btn btn-flat">
+      <i class="fas fa-search"></i> Search
+    </button>
+  </div>
+<% end %>
