@@ -8,11 +8,8 @@ class OffersController < ApplicationController
   end
 
   def show
-<<<<<<< HEAD
     @offer = Offer.find(params[:id])
-=======
     authorize @offer
->>>>>>> cd84af6e595ad62293afc0273b1cfa25c25e9455
   end
 
   def new
