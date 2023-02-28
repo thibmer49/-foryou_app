@@ -8,4 +8,13 @@ class Offer < ApplicationRecord
   validates :description, length: { minimum: 6 }
 
   CATEGORY = ["Baby-sitting/Garde d'enfants", "Maison/Décoration", "Réparation/Entretien", "Dog-sitting/Garde d'animaux", "Jardin/Extérieur", "Animation", "Traiteur/Service à table" ]
+
+  before_save :attach_photo
+
+  private
+
+  def attach_photo
+    return if photo.attached?
+    self.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/logo2.png')), filename: 'image')
+  end
 end

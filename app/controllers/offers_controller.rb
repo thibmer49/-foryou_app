@@ -3,8 +3,8 @@ class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @offers = Offer.all
-    # @offers = policy_scope(Offer)
+    # @offers = Offer.all
+    @offers = policy_scope(Offer)
   end
 
   def show
@@ -42,6 +42,6 @@ class OffersController < ApplicationController
   end
 
   def offer_params
-    params.require(:offer).permit(:price_per_day, :name, :description, :category, :address, :beginning_date, :end_date)
+    params.require(:offer).permit(:price_per_day, :name, :description, :category, :address, :beginning_date, :end_date, :photo)
   end
 end

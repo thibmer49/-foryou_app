@@ -24,14 +24,15 @@ puts "Cleaning up database..."
 Offer.destroy_all
 puts "Database cleaned"
 12.times do
-  categories = %w[Bricolage Jardinage Babysitting Dogsitting Traiteur Informatique]
 
   Offer.create!(
     user: User.all.sample,
     price_per_day: rand(10..100),
     description: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
-    category: categories.sample,
+    address: Faker::Address.full_address,
+    category: Offer::CATEGORY.sample,
     name: Faker::Lorem.sentence
   )
+  puts "1 offer created"
 end
 puts "Offers created"
