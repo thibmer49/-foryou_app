@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   # resources :reviews, only: %i[new create destroy]
-  resources :offers, only: %i[index show new create destroy]
-  resources :bookings, only: %i[new create update destroy]
+  resources :offers, only: %i[index show new create destroy] do
+    resources :bookings, only: %i[new create]
+  end
+  resources :bookings, only: %i[update destroy]
 end

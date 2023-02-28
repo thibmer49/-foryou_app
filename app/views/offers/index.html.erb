@@ -28,10 +28,10 @@
           <div class="card-offer-infos">
             <div>
               <h2><%= offer.name %></h2>
-              <h2><%= offer.category %></h2>
+              <em><h2><%= offer.category %></h2></em>
               <p><%= offer.description %></p>
+              <h3 class="card-offer-pricing"><%= offer.price_per_day %> €</h3>
             </div>
-            <h2 class="card-offer-pricing">25€/h</h2>
             <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
           </div>
         </div>
