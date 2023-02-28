@@ -1,0 +1,22 @@
+<div class="container p-5">
+  <div class="cards p-5 unique-card">
+    <div class="card-offer">
+      <img src="https://loremflickr.com/320/240/<%="#{@offer.category}"%>">
+      <div class="card-offer-infos">
+        <div>
+          <h2><%= @offer.name %></h2>
+          <em><h2><%= @offer.category %></h2></em>
+          <p><%= @offer.description %></p>
+        </div>
+        <h2 class="card-offer-pricing"><%= @offer.price_per_day %> € /day</h2>
+        <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
+      </div>
+    </div>
+  </div>
+
+  <%= simple_form_for [@offer, @booking], data: { controller: 'flatpickr' } do |f| %>
+    <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startDate" } } %>
+    <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endDate" } } %>
+    <%= f.submit 'Schedule your appointment' %>
+  <% end %>
+</div>

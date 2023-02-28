@@ -4,6 +4,9 @@
   grid-gap: 16px;
 }
 
+.unique-card {
+  display: block;
+}
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {

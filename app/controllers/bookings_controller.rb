@@ -1,15 +1,18 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show destroy]
-
+  skip_before_action :authenticate_user!, only: %i[new create]
   def show
   end
 
   def new
+    @offer = Offer.find(params[:offer_id])
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
+    authorize @booking
     if @booking.save
       redirect_to booking_path(@booking)
     else
