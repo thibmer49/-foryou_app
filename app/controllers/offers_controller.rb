@@ -1,11 +1,13 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: %i[show destroy]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     @offers = Offer.all
   end
 
   def show
+    @offer = Offer.find(params[:id])
   end
 
   def new
@@ -26,8 +28,6 @@ class OffersController < ApplicationController
     @offer.destroy
     redirect_to offers_path
   end
-
-
 
   private
 
