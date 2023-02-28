@@ -8,22 +8,22 @@ require 'faker'
 #   Character.create(name: "Luke", movie: movies.first)
 puts "Cleaning up database..."
 
-User.destroy_all
-10.times do
-  User.create!(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    pseudo: Faker::Name.name,
-    email: Faker::Internet.email,
-    address: Faker::Address.full_address,
-    password: Faker::Internet.password,
-    phone_number: Faker::PhoneNumber.phone_number_with_country_code,
-    birth_date: Faker::Date.birthday
-  )
-end
+# User.destroy_all
+# 10.times do
+#   User.create!(
+#     first_name: Faker::Name.first_name,
+#     last_name: Faker::Name.last_name,
+#     pseudo: Faker::Name.name,
+#     email: Faker::Internet.email,
+#     address: Faker::Address.full_address,
+#     password: Faker::Internet.password,
+#     phone_number: Faker::PhoneNumber.phone_number_with_country_code,
+#     birth_date: Faker::Date.birthday
+#   )
+# end
 Offer.destroy_all
 puts "Database cleaned"
-10.times do
+12.times do
   categories = %w[Bricolage Jardinage Babysitting Dogsitting Traiteur Informatique]
 
   Offer.create!(
