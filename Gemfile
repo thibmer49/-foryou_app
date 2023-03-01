@@ -6,6 +6,9 @@ ruby "3.1.2"
 # Cloudinary
 gem "cloudinary"
 
+# Geocoder
+gem "geocoder"
+
 # Pundit
 gem "pundit"
 
