@@ -14,7 +14,24 @@ class Offer < ApplicationRecord
   private
 
   def attach_photo
-    return if photo.attached?
-    self.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/logo2.png')), filename: 'image')
+    if photo.attached?
+      return
+    else
+    category_images = {
+      CATEGORY[0] => 'babysitting.jpg',
+      CATEGORY[1] => 'menage.jpg',
+      CATEGORY[2] => 'reparation.jpg',
+      CATEGORY[3] => 'dog.jpg',
+      CATEGORY[4] => 'jardin.png',
+      CATEGORY[5] => 'animation.jpg',
+      CATEGORY[6] => 'traiteur.jpg'
+    }
+
+    image_filename = category_images[self.category] || 'logo2.png'
+    image_path = File.join(Rails.root, 'app/assets/images', image_filename)
+
+    self.photo.attach(io: File.open(image_path), filename: 'image')
+    end
   end
+
 end
