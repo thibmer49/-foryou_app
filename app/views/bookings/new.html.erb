@@ -1,7 +1,8 @@
 <div class="container p-5">
   <div class="cards p-5 unique-card">
     <div class="card-offer">
-      <img src="https://loremflickr.com/320/240/<%="#{@offer.category}"%>">
+      <%= cl_image_tag @offer.photo.key,
+        width: 400, height: 300, fit: :scale %>
       <div class="card-offer-infos">
         <div>
           <h2><%= @offer.name %></h2>
