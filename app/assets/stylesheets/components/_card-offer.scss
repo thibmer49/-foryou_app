@@ -11,8 +11,14 @@
   object-fit: cover;
 }
 
+.card-offer h5 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+}
+
 .card-offer h2 {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   margin: 0;
 }
@@ -38,5 +44,3 @@
   top: -20px;
   width: 40px;
 }
-
-
