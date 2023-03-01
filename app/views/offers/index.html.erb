@@ -26,7 +26,7 @@
         <div class="card-offer">
           <%= cl_image_tag offer.photo.key,
           width: 400, height: 300, crop: :fill %>
-          <%= link_to 'Book now', offer_path(offer), class: 'btn btn-secondary' %>
+          <%= link_to 'Book now', new_offer_booking_path(offer), class: 'btn btn-secondary' %>
           <div class="card-offer-infos">
             <div>
               <h2><%= offer.name %></h2>
