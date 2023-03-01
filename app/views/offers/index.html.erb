@@ -1,6 +1,6 @@
 <div class="bg-white">
   <div class="container p-5 bg-white">
-  <h1>Trouvez l'offre qui correspond</h1>
+  <h1>Trouvez l'offre qui vous correspond</h1>
     <%# SEARCH BAR %>
    <%= simple_form_for :search, url: root_path, method: :get do |f| %>
       <div class="search-form-control form-group">
@@ -26,10 +26,11 @@
         <div class="card-offer">
           <%= cl_image_tag offer.photo.key,
           width: 400, height: 300, crop: :fill %>
+          <%= link_to 'Book now', offer_path(offer), class: 'btn btn-secondary' %>
           <div class="card-offer-infos">
             <div>
               <h2><%= offer.name %></h2>
-              <em><h2><%= offer.category %></h2></em>
+              <em><h5><%= offer.category %></h5></em>
               <p><%= offer.description %></p>
               <h3 class="card-offer-pricing"><%= offer.price_per_day %> €</h3>
             </div>
