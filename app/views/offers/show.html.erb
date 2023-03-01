@@ -1,16 +1,21 @@
 <div class="bg-white p-5">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8 col-lg-6">
-      <div class="img">
-        <%= cl_image_tag @offer.photo.key, width: 600 %>
+      <div class="text-center">
+        <%= cl_image_tag @offer.photo.key, width: 680 %>
       </div>
       <div class="mx-auto">
         <h2 class="text-center pt-5" style="color: #3C1A5B"><strong>Mon offre for you...</strong></h2>
         <P><strong>Nom:</strong> <%= @offer.name %></P>
-        <p> <strong>descrisption:</strong> <%= @offer.description %></p>
+        <p> <strong>Descrisption:</strong> <%= @offer.description %></p>
         <p> <strong>Catégorie:</strong> <%= @offer.category %></p>
         <p><strong>Adresse:</strong> <%= @offer.address %></p>
         <p><strong>Prix:</strong> <%= @offer.price_per_day %> €</p>
+        <div class="d-flex justify-content-between">
+          <%= link_to "Mettre à jour l'offre", edit_offer_path(@offer), class: 'btn btn-update me-30'%>
+          <%= link_to "Supprimer l'offre", offer_path(@offer),
+          data: {turbo_method: :delete, turbo_confirm: "ëtes vous sûr?"}, class: 'btn btn-destroy me-30'%>
+        </div>
       </div>
     </div>
   </div>

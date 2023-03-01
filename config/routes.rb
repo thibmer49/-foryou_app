@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   # resources :reviews, only: %i[new create destroy]
-  resources :offers, only: %i[index show new create destroy] do
+  resources :offers, only: %i[index show new create edit update destroy] do
     resources :bookings, only: %i[new create]
   end
   resources :bookings, only: %i[update destroy]
