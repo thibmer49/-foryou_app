@@ -9,6 +9,7 @@ require 'faker'
 puts "Cleaning up database..."
 
 # DO NOT REMOVE
+Offer.destroy_all
 User.destroy_all
 10.times do
   User.create!(
@@ -22,7 +23,7 @@ User.destroy_all
     birth_date: Faker::Date.birthday
   )
 end
-Offer.destroy_all
+
 puts "Database cleaned"
 12.times do
 
