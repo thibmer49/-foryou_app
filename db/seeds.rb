@@ -29,7 +29,7 @@ puts "Database cleaned"
     user: User.all.sample,
     price_per_day: rand(10..100),
     description: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
-    address: Faker::Address.full_address,
+    address: "16 villa Gaudelet",
     category: Offer::CATEGORY.sample,
     name: Faker::Lorem.sentence
   )
