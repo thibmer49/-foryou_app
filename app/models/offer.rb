@@ -6,6 +6,8 @@ class Offer < ApplicationRecord
   validates :category, inclusion: { in: ["Baby-sitting/Garde d'enfants", "Maison/Décoration", "Réparation/Entretien", "Dog-sitting/Garde d'animaux", "Jardin/Extérieur", "Animation", "Traiteur/Service à table" ] }
   validates :name, length: { minimum: 3 }
   validates :description, length: { minimum: 6 }
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 
   CATEGORY = ["Baby-sitting/Garde d'enfants", "Maison/Décoration", "Réparation/Entretien", "Dog-sitting/Garde d'animaux", "Jardin/Extérieur", "Animation", "Traiteur/Service à table" ]
 
