@@ -7,7 +7,7 @@
       <div class="mx-auto">
         <h2 class="text-center pt-5" style="color: #3C1A5B"><strong>Mon offre for you...</strong></h2>
         <P><strong>Nom:</strong> <%= @offer.name %></P>
-        <p> <strong>Descrisption:</strong> <%= @offer.description %></p>
+        <p> <strong>Description:</strong> <%= @offer.description %></p>
         <p> <strong>Catégorie:</strong> <%= @offer.category %></p>
         <p><strong>Adresse:</strong> <%= @offer.address %></p>
         <p><strong>Prix:</strong> <%= @offer.price_per_day %> €</p>
@@ -17,12 +17,6 @@
           data: {turbo_method: :delete, turbo_confirm: "êtes vous sûr?"}, class: 'btn btn-destroy me-30'%>
         </div>
       </div>
-        <div class="container">
-          <div style="width: 100%; height: 600px;"
-          data-controller="map"
-          data-map-markers-value="<%= @markers.to_json %>"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-        </div>
     </div>
   </div>
 </div>
