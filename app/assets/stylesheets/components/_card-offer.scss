@@ -62,7 +62,6 @@
 
 .card-offer .card-offer-person { //pour avatar et prix
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 10px 0px;
+  justify-content: end;
+  margin: 10px 10px;
 }
