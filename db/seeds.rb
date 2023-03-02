@@ -28,7 +28,6 @@ end
 puts "Database cleaned"
 
 12.times do
-
   Offer.create!(
     user: User.all.sample,
     price_per_day: rand(10..100),
