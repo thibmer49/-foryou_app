@@ -21,30 +21,25 @@
       <i class="fa-solid fa-computer"></i>
     </div>
     <%# FIN ICONS RECHERCHE %>
-    <div class="cards p-5">
-    <% @offers.each do |offer| %>
-        <div class="card-offer">
+    <div class="cards">
+      <% @offers.each do |offer| %>
+        <div class="card-offer position-relative min-h-100 max-h-100">
+          <div class="position-absolute d-flex justify-content-center align-items-center w-100 h-100">
+            <%= link_to 'Book now', offer_path(offer), class: 'btn btn-secondary', style: 'opacity: 0.9'%>
+          </div>
           <%= cl_image_tag offer.photo.key,
           width: 400, height: 300, crop: :fill %>
-          <%= link_to 'Book now', new_offer_booking_path(offer), class: 'btn btn-secondary' %>
           <div class="card-offer-infos">
-            <div>
-              <h2><%= offer.name %></h2>
-              <em><h5><%= offer.category %></h5></em>
-              <p><%= offer.description %></p>
-              <h3 class="card-offer-pricing"><%= offer.price_per_day %> €</h3>
-            </div>
-            <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
+            <h2><%= offer.name %></h2>
+            <em><h5><%= offer.category %></h5></em>
+            <p><%= offer.description %></p>
           </div>
+            <div class="card-offer-person">
+              <h3 class="card-offer-pricing"><%= offer.price_per_day %> € /jour</h3>
+              <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
+            </div>
         </div>
     <% end %>
     </div>
   </div>
-  <div class="container">
-    <div style="width: 100%; height: 600px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-  </div>
-  <%# FIN MAP %>
 </div>

@@ -10,6 +10,7 @@ puts "Cleaning up database..."
 
 # DO NOT REMOVE
 Offer.destroy_all
+
 User.destroy_all
 10.times do
   User.create!(
@@ -25,6 +26,7 @@ User.destroy_all
 end
 
 puts "Database cleaned"
+
 12.times do
 
   Offer.create!(
