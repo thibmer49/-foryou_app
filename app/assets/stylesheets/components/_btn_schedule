@@ -1,0 +1,9 @@
+.btn_schedule {
+  color: white;
+  background:#3C1A5B;
+}
+
+.btn_schedule:hover {
+  background: white;
+  color: #3C1A5B;
+}
