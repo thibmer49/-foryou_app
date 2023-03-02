@@ -1,13 +1,20 @@
 .icon-bar {
   margin: 20px;
   display: flex;
-  align-items: center;
+  // align-items: center;
   justify-content: space-between;
   font-size: 32px;
-  color: #78628c;
-  padding: 5px 20px;
+  padding: 5px 0px;
 }
 
-.icon-bar i:hover {
-  color: #432c58;
+.icon-bar .btn {
+  color: #3c1a5b;
+}
+
+.icon-bar .btn:hover {
+  color: #7d6495;
+}
+
+.btn p {
+  font-size: small;
 }
