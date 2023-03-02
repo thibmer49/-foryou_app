@@ -11,24 +11,24 @@
   <div class="container p-5 bg-white">
     <h1>Ils proposent leur service :</h1>
     <div class="cards p-5">
-      <% @offers.each do |offer| %>
-        <div class="card-offer position-relative min-h-100 max-h-100">
-          <div class="position-absolute d-flex justify-content-center align-items-center w-100 h-100">
-            <%= link_to 'Book now', offer_path(offer), class: 'btn btn-secondary', style: 'opacity: 0.9'%>
-          </div>
-          <%= cl_image_tag offer.photo.key,
-          width: 400, height: 300, crop: :fill %>
-          <div class="card-offer-infos">
-            <h2><%= offer.name %></h2>
-            <em><h5><%= offer.category %></h5></em>
-            <p><%= offer.description %></p>
-          </div>
-            <div class="card-offer-person">
-              <h3 class="card-offer-pricing"><%= offer.price_per_day %> € /jour</h3>
-              <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
+
+    <% @offers.each do |offer| %>
+          <div class="card-offer">
+            <%= link_to new_offer_booking_path(offer), id: "card-link" do %>
+            <%= cl_image_tag offer.photo.key, width: 450, height: 200, style: "object-fit: cover"%>
+            <div class="card-offer-infos">
+              <h3><%= truncate(offer.name, length: 40, separator: ' ', omission: '...') %></h3>
+              <em><h5><%= offer.category %></h5></em>
+              <p><%= truncate(offer.description, length: 40, separator: ' ', omission: '...') %></p>
             </div>
-        </div>
+            <div class="card-offer-person">
+                <h5 class="card-offer-pricing"><%= offer.price_per_day %> € /jour</h5>
+                <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
+            </div>
+            <% end %>
+          </div>
       <% end %>
+
     </div>
     <div class="text-center text-decoration-none">
       <%= link_to "Voir toutes les offres", offers_path, class: 'btn btn-show-offer w-50' %>
