@@ -31,7 +31,7 @@
 
   <h3 class="my-3">Offers</h3>
   <% @offers.each do |offer| %>
-    <div class="card-offer">
+    <div class="card-offer mb-5">
           <%= cl_image_tag offer.photo.key,
           width: 400, height: 300, crop: :fill %>
           <div class="card-offer-infos">
