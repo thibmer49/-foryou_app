@@ -11,23 +11,24 @@
     <h1>Ils proposent leur service :</h1>
     <div class="cards p-5">
 
-    <% @offers.each do |offer| %>
-          <div class="card-offer">
+     <% @offers.each do |offer| %>
+          <div class="card-offer position-relative">
             <%= link_to new_offer_booking_path(offer), id: "card-link" do %>
             <%= cl_image_tag offer.photo.key, width: 450, height: 200, style: "object-fit: cover"%>
             <div class="card-offer-infos">
               <h3><%= truncate(offer.name, length: 40, separator: ' ', omission: '...') %></h3>
               <em><h5><%= offer.category %></h5></em>
               <p><%= truncate(offer.description, length: 40, separator: ' ', omission: '...') %></p>
-            </div>
-            <div class="card-offer-person">
-                <h5 class="card-offer-pricing"><%= offer.price_per_day %> € /jour</h5>
+              </div>
+              <div class="card-offer-person">
+                  <h4 class="card-offer-pricing"><%= offer.price_per_day %> € /jour</h4>
+              </div>
+              <div class="position-absolute" style="top: 180px; right: 20px;">
                 <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
-            </div>
+              </div>
             <% end %>
           </div>
       <% end %>
-
     </div>
     <div class="text-center text-decoration-none">
       <%= link_to "Voir toutes les offres", offers_path, class: 'btn btn-show-offer w-50' %>

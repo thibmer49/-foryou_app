@@ -12,6 +12,20 @@
       <h6> <strong>Description:</strong> <%= @offer.description %></h6>
       <h6><strong>Adresse:</strong> <%= @offer.address %></h6>
       <h6><strong>Prix:</strong> <%= @offer.price_per_day %> €</h6>
+<<<<<<< HEAD
+    </div>
+    <div class="justify-content-center mx-3" id="map">
+      <div style="width: 600px; height: 400px;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+    <div class="card_flatpickr">
+      <div class="cards p-5 unique-card">
+        <%= simple_form_for [@offer, @booking], data: { controller: 'flatpickr' } do |f| %>
+          <%= f.input :start_date, as: :string, input_html: { id: 'start_date', data: { flatpickr_target: "startDate" } } %>
+=======
     </div>
 
     <div class="justify-content-center mx-3" id="map">
@@ -26,6 +40,7 @@
       <div class="cards p-5 unique-card">
         <%= simple_form_for [@offer, @booking], data: { controller: 'flatpickr' } do |f| %>
           <%= f.input :start_date, as: :string, input_html: { id: "start_date", data: { flatpickr_target: "startDate" } } %>
+>>>>>>> bc4ee4deecd283f0378c97909bfea6feb78d6b3b
           <%= f.input :end_date, as: :string, input_html: { id: "end_date",  data: { flatpickr_target: "endDate" } } %>
           <button type="submit" class="btn btn_schedule">Réservez ce service</button>
         <% end %>
