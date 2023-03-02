@@ -37,23 +37,25 @@
 
 
   <h3 class="my-3">Réservation en attente</h3>
-  <% @bookings_requests.each do |request| %>
-    <div class="card-offer">
-          <%= cl_image_tag request.offer.photo.key,
-          width: 400, height: 300, crop: :fill %>
-          <div class="card-offer-infos">
-            <div>
-                <h2><%= request.offer.name %> </h2>
-                <em><%= request.offer.category %></em>
-                <p><%= request.offer.description %></p>
-                <p><strong><%= request.start_date %> to <%= request.end_date %></strong></p>
-                <h3 class="card-offer-pricing"><%= request.offer.price_per_day %>€</h3>
-            </div>
-          <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
+    <div class="cards p-5">
+      <% @bookings_requests.each do |request| %>
+        <div class="card-offer">
+            <%= cl_image_tag request.offer.photo.key,
+            width: 400, height: 300, crop: :fill %>
+            <div class="card-offer-infos">
+              <div>
+                  <h2><%= request.offer.name %> </h2>
+                  <em><%= request.offer.category %></em>
+                  <p><%= request.offer.description %></p>
+                  <p><strong><%= request.start_date %> to <%= request.end_date %></strong></p>
+                  <h3 class="card-offer-pricing"><%= request.offer.price_per_day %>€</h3>
+              </div>
+            <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
+          </div>
+          <button class="btn btn-secondary">Accepter la réservation</button>
+          <button class="btn btn-secondary"><%= link_to "Supprimer l'offre", booking_path(request),
+            data: {turbo_method: :delete, turbo_confirm: "êtes vous sûr?"} %></button>
         </div>
-        <button class="btn btn-secondary">Accepter la réservation</button>
-        <button class="btn btn-secondary"><%= link_to "Supprimer l'offre", booking_path(request),
-          data: {turbo_method: :delete, turbo_confirm: "êtes vous sûr?"} %></button>
-    </div>
-  <% end %>
+      <% end %>
+   </div>
 </div>

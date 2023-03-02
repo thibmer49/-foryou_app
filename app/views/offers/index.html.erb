@@ -23,7 +23,7 @@
     <%# FIN ICONS RECHERCHE %>
     <div class="cards p-5">
     <% @offers.each do |offer| %>
-        <div class="card-offer">
+        <div class="card-offer my-3">
           <%= cl_image_tag offer.photo.key,
           width: 400, height: 300, crop: :fill %>
           <%= link_to 'Book now', new_offer_booking_path(offer), class: 'btn btn-secondary' %>
