@@ -22,7 +22,7 @@ puts "Cleaning up database..."
 #   )
 # end
 Offer.destroy_all
-puts "Database cleaned"
+# puts "Database cleaned"
 12.times do
 
   Offer.create!(

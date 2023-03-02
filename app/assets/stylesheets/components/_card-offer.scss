@@ -32,7 +32,7 @@
 
 .card-offer .card-offer-infos {
   padding: 16px;
-  display: flex;
+  display: block;
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
@@ -43,4 +43,10 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.card-offer .card-offer-person { //pour avatar et prix
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 15px;
 }
