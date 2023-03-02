@@ -15,6 +15,6 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user == user
+    record.user == user || record.offer.user == user
   end
 end
