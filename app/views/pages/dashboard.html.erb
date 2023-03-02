@@ -2,8 +2,9 @@
   <h1>MON TABLEAU DE BORD</h1>
 
   <h3>Bookings</h3>
-  <% @bookings.each do |booking| %>
-    <div class="card-offer">
+
+    <% @bookings.each do |booking| %>
+      <div class="card-offer mb-5">
           <%= cl_image_tag booking.offer.photo.key,
           width: 400, height: 300, crop: :fill %>
           <div class="card-offer-infos">
@@ -11,12 +12,22 @@
                 <h2><%= booking.offer.name %> </h2>
                 <em><%= booking.offer.category %></em>
                 <p><%= booking.offer.description %></p>
+                <p><strong><%= booking.start_date %> to <%= booking.end_date %></strong></p>
                 <h3 class="card-offer-pricing"><%= booking.offer.price_per_day %>€</h3>
             </div>
+
+                <div class="d-flex justify-content-end">
+           <%= link_to "Supprimer ce booking", booking_path(booking),
+          data: {turbo_method: :delete, turbo_confirm: "êtes vous sûr?"}, class: 'btn btn-secondary', style: 'opacity: 0.9'%>
+          </div>
+
           <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
         </div>
       </div>
-  <% end %>
+    <% end %>
+
+
+
 
   <h3 class="my-3">Offers</h3>
   <% @offers.each do |offer| %>
@@ -37,7 +48,8 @@
 
 
   <h3 class="my-3">Réservation en attente</h3>
-  <% @bookings_requests.each do |request| %>
+   <div class="cards">
+    <% @bookings_requests.each do |request| %>
     <div class="card-offer">
           <%= cl_image_tag request.offer.photo.key,
           width: 400, height: 300, crop: :fill %>
@@ -55,5 +67,6 @@
         <button class="btn btn-secondary"><%= link_to "Supprimer l'offre", booking_path(request),
           data: {turbo_method: :delete, turbo_confirm: "êtes vous sûr?"} %></button>
     </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
