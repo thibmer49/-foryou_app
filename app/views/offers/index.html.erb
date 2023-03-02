@@ -1,45 +1,85 @@
 <div class="bg-white">
-  <div class="container p-5 bg-white">
+  <div class="container p-4 bg-white">
   <h1>Trouvez l'offre qui vous correspond</h1>
     <%# SEARCH BAR %>
-   <%= simple_form_for :search, url: root_path, method: :get do |f| %>
-      <div class="search-form-control form-group">
-        <input class="form-control string required" type="text" name="search[query]" id="search_query" />
-        <button name="button" type="submit" class="btn btn-flat">
-          <i class="fas fa-search"></i> Search
-        </button>
-      </div>
+    <%= form_with url: offers_path, method: :get, class: "d-flex border-radius: 10px" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "i.e: Babysitting"
+      %>
+      <%= submit_tag "Search", class: "violet-button" %>
     <% end %>
     <%# FIN SEARCH BAR %>
     <%# ICONS RECHERCHE %>
     <div class="icon-bar">
-      <i class="fa-solid fa-hammer"></i>
-      <i class="fa-solid fa-seedling"></i>
-      <i class="fa-solid fa-baby"></i>
-      <i class="fa-solid fa-dog"></i>
-      <i class="fa-solid fa-bowl-food"></i>
-      <i class="fa-solid fa-computer"></i>
+      <%= form_tag offers_path, method: :get do %>
+        <%= button_tag type: "submit", class: "btn btn-default", name: "jardin_exterieur" do %>
+          <i class="fa-solid fa-seedling"></i>
+          <p>Jardin/Extérieur</p>
+        <% end %>
+      <% end %>
+
+      <%= form_tag offers_path, method: :get do %>
+        <%= button_tag type: "submit", class: "btn btn-default", name: "babysitting" do %>
+          <i class="fa-solid fa-baby-carriage"></i>
+          <p>Baby-sitting/Garde d'enfants</p>
+        <% end %>
+      <% end %>
+
+      <%= form_tag offers_path, method: :get do %>
+        <%= button_tag type: "submit", class: "btn btn-default", name: "dogsitting" do %>
+          <i class="fa-solid fa-dog"></i>
+          <p>Dog-sitting/Garde d'animaux</p>
+        <% end %>
+      <% end %>
+
+      <%= form_tag offers_path, method: :get do %>
+        <%= button_tag type: "submit", class: "btn btn-default", name: "reparation" do %>
+          <i class="fa-solid fa-screwdriver-wrench"></i>
+          <p>Réparation/Entretien</p>
+        <% end %>
+      <% end %>
+
+      <%= form_tag offers_path, method: :get do %>
+        <%= button_tag type: "submit", class: "btn btn-default", name: "house" do %>
+          <i class="fa-solid fa-house"></i>
+          <p>Maison/Décoration</p>
+        <% end %>
+      <% end %>
+
+      <%= form_tag offers_path, method: :get do %>
+        <%= button_tag type: "submit", class: "btn btn-default", name: "party" do %>
+          <i class="fa-solid fa-cake-candles"></i>
+          <p>Animation</p>
+        <% end %>
+      <% end %>
+
+      <%= form_tag offers_path, method: :get do %>
+        <%= button_tag type: "submit", class: "btn btn-default", name: "cook" do %>
+          <i class="fa-solid fa-utensils"></i>
+          <p>Traiteur/Service à table</p>
+        <% end %>
+      <% end %>
     </div>
     <%# FIN ICONS RECHERCHE %>
     <div class="cards">
       <% @offers.each do |offer| %>
-        <div class="card-offer position-relative min-h-100 max-h-100">
-          <div class="position-absolute d-flex justify-content-center align-items-center w-100 h-100">
-            <%= link_to 'Book now', offer_path(offer), class: 'btn btn-secondary', style: 'opacity: 0.9'%>
-          </div>
-          <%= cl_image_tag offer.photo.key,
-          width: 400, height: 300, crop: :fill %>
-          <div class="card-offer-infos">
-            <h2><%= offer.name %></h2>
-            <em><h5><%= offer.category %></h5></em>
-            <p><%= offer.description %></p>
-          </div>
-            <div class="card-offer-person">
-              <h3 class="card-offer-pricing"><%= offer.price_per_day %> € /jour</h3>
-              <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
+          <div class="card-offer">
+            <%= link_to new_offer_booking_path(offer), id: "card-link" do %>
+            <%= cl_image_tag offer.photo.key, width: 300, height: 200, crop: :fill %>
+            <div class="card-offer-infos">
+              <h3><%= truncate(offer.name, length: 40, separator: ' ', omission: '...') %></h3>
+              <em><h5><%= offer.category %></h5></em>
+              <p><%= truncate(offer.description, length: 40, separator: ' ', omission: '...') %></p>
             </div>
-        </div>
-    <% end %>
+            <div class="card-offer-person">
+                <h5 class="card-offer-pricing"><%= offer.price_per_day %> € /jour</h5>
+                <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
+            </div>
+            <% end %>
+          </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -7,6 +7,7 @@
   top: 8px;
   bottom: 8px;
   right: 8px;
+  background-color: #5c1d7f;
 }
 
 .search-form-control .form-control {
@@ -19,4 +20,13 @@
   border: 1px solid #1EDD88;
   outline: none !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.violet-button {
+  background-color: #5c1d7f;
+  border-color: #5c1d7f;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px 5px;
 }

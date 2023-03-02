@@ -3,6 +3,17 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 5px;
+  color: black;
+
+}
+
+.card-offer:hover {
+  opacity: 0.65;
+}
+
+#card-link {
+  text-decoration: none;
+  color: black;
 }
 
 .card-offer > img {
@@ -31,11 +42,15 @@
 
 
 .card-offer .card-offer-infos {
-  padding: 16px;
+  padding: 16px 16px 0px 16px;
   display: block;
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+}
+
+.card-offer .card-offer-infos h3 {
+  font-size:medium;
 }
 
 .card-offer-infos .card-offer-user {
@@ -47,6 +62,7 @@
 
 .card-offer .card-offer-person { //pour avatar et prix
   display: flex;
-  justify-content: space-between;
-  margin: 15px 15px;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 0px;
 }

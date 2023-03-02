@@ -3,8 +3,26 @@ class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @offers = Offer.all
     @offers = policy_scope(Offer)
+    if params[:jardin_exterieur]
+      @offers = @offers.where(category: "Jardin/Extérieur")
+    elsif params[:babysitting]
+      @offers = @offers.where(category: "Baby-sitting/Garde d'enfants")
+    elsif params[:dogsitting]
+      @offers = @offers.where(category: "Dog-sitting/Garde d'animaux")
+    elsif params[:reparation]
+      @offers = @offers.where(category: "Réparation/Entretien")
+    elsif params[:house]
+      @offers = @offers.where(category: "Maison/Décoration")
+    elsif params[:party]
+      @offers = @offers.where(category: "Animation")
+    elsif params[:cook]
+      @offers = @offers.where(category: "Traiteur/Service à table")
+    elsif params[:query].present?
+      @offers = Offer.search_by_name_and_description(params[:query])
+    else
+      @offers = Offer.all
+    end
     @markers = @offers.geocoded.map do |offer|
       {
         lat: offer.latitude,
