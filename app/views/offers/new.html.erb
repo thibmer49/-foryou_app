@@ -5,13 +5,13 @@
         <div class="bg-white rounded p-3 shadow">
           <h3 class="text-center">Créez votre offre</h3>
           <%= simple_form_for @offer do |f| %>
-            <%= f.input :name, placeholder: 'Quel service proposez-vous ?' %>
-            <%= f.input :description, placeholder: 'Décrivez en quelques mots votre service' %>
-            <%= f.input :category, collection: Offer::CATEGORY %>
-            <%= f.input :price_per_day%>
-            <%= f.input :address %>
+            <%= f.input :name, label: 'Nom', placeholder: 'Quel service proposez-vous ?' %>
+            <%= f.input :description, label: 'Description', placeholder: 'Décrivez en quelques mots votre service' %>
+            <%= f.input :category, label: 'Catégorie', collection: Offer::CATEGORY %>
+            <%= f.input :price_per_day, label: 'Prix par jour'%>
+            <%= f.input :address, label: 'Adresse' %>
             <%= f.input :photo, as: :file %>
-            <%= f.submit class: 'btn btn-flat-create w-100' %>
+            <%= f.submit "Créez votre offre", class: 'btn btn_new_offer w-100' %>
           <% end %>
         </div>
       </div>
