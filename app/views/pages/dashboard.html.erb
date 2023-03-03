@@ -16,16 +16,16 @@
           <div class="card-offer-infos">
 
             <div>
-                <h2><%= booking.offer.name %> </h2>
-                <em><%= booking.offer.category %></em>
-                <p><%= booking.offer.description %></p>
-                <p><strong>du <%= booking.start_date %> au <%= booking.end_date %></strong></p>
-                <h3 class="card-offer-pricing">Prix total : <%= booking.total_price %>€</h3>
+              <h2><%= booking.offer.name %> </h2>
+              <em><%= booking.offer.category %></em>
+              <p><%= truncate(booking.offer.description, length: 80, separator: ' ', omission: '...') %></p>
+              <p><strong>du <%= booking.start_date %> au <%= booking.end_date %></strong></p>
+              <br>
             </div>
-
-                <div class="d-flex justify-content-end">
-           <%= link_to "Supprimer ce booking", booking_path(booking),
-          data: {turbo_method: :delete, turbo_confirm: "êtes vous sûr?"}, class: 'btn btn-secondary', style: 'opacity: 0.9'%>
+            <div class="d-flex justify-content-between">
+              <h3 class="card-offer-pricing mb-4">Prix total : <%= booking.total_price %>€</h3>
+            <%= link_to "Supprimer ce booking", booking_path(booking),
+          data: {turbo_method: :delete, turbo_confirm: "êtes vous sûr?"}, class: 'btn btn-secondary position-absolute', style: 'opacity: 0.9; top: 115px; right: 20px;'%>
                 </div>
 
           </div>
