@@ -1,17 +1,18 @@
 <div class="bg-white">
   <div class="container p-4 bg-white">
-  <h1>Trouvez l'offre qui vous correspond</h1>
+  <h1 class="mb-4 text-center">Trouvez l'offre qui vous correspond</h1>
     <%# SEARCH BAR %>
-    <%= form_with url: offers_path, method: :get, class: "d-flex border-radius: 10px" do %>
+    <%= form_with url: offers_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
         placeholder: "i.e: Babysitting"
       %>
-      <%= submit_tag "Search", class: "violet-button" %>
+      <%= submit_tag "Recherchez", class: "violet-button" %>
     <% end %>
     <%# FIN SEARCH BAR %>
     <%# ICONS RECHERCHE %>
+
     <div class="icon-bar">
       <%= form_tag offers_path, method: :get do %>
         <%= button_tag type: "submit", class: "btn btn-default", name: "jardin_exterieur" do %>
@@ -59,6 +60,13 @@
         <%= button_tag type: "submit", class: "btn btn-default", name: "cook" do %>
           <i class="fa-solid fa-utensils"></i>
           <p>Traiteur/Service à table</p>
+        <% end %>
+      <% end %>
+
+      <%= form_tag offers_path, method: :get do %>
+        <%= button_tag type: "submit", class: "btn btn-default", name: "all_offers" do %>
+        <i class="fa-solid fa-rotate-left"></i>
+        <p>Toutes les catégories</p>
         <% end %>
       <% end %>
     </div>
