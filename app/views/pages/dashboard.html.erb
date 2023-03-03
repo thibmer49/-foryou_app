@@ -5,79 +5,81 @@
 
     <div class="cards">
       <% @bookings.each do |booking| %>
-
         <div class="card-offer position-relative">
-          <%= cl_image_tag booking.offer.photo.key,
-          width: 400, height: 300, style: "object-fit: cover" %>
-           <div class="position-absolute" style="top: 180px; right: 20px;">
-                <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
+          <%= link_to new_offer_booking_path(booking.offer), id: "card-link" do %>
+            <%= cl_image_tag booking.offer.photo.key,
+            width: 450, height: 200, style: "object-fit: cover" %>
+              <div class="position-absolute" style="top: 180px; right: 20px;">
+                  <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
               </div>
-
-          <div class="card-offer-infos">
-
-            <div>
-              <h2><%= booking.offer.name %> </h2>
-              <em><%= booking.offer.category %></em>
-              <p><%= truncate(booking.offer.description, length: 80, separator: ' ', omission: '...') %></p>
-              <p><strong>du <%= booking.start_date %> au <%= booking.end_date %></strong></p>
-              <br>
+            <div class="card-offer-infos">
+              <div>
+                <h2><%= truncate(booking.offer.name, length: 35, separator: ' ', omission: '...') %> </h2>
+                <em><%= booking.offer.category %></em>
+                <p><%= truncate(booking.offer.description, length: 80, separator: ' ', omission: '...') %></p>
+                <p><strong>du <%= booking.start_date %> au <%= booking.end_date %></strong></p>
+                <br>
+              </div>
+              <div class="d-flex justify-content-between">
+                <h3 class="card-offer-pricing mb-4">Prix total : <%= booking.total_price %>€</h3>
+                <%= link_to "Supprimer ce booking", booking_path(booking),
+                data: {turbo_method: :delete, turbo_confirm: "êtes vous sûr?"}, class: 'btn btn-secondary position-absolute', style: 'opacity: 0.9; top: 115px; right: 20px;'%>
+              </div>
             </div>
-            <div class="d-flex justify-content-between">
-              <h3 class="card-offer-pricing mb-4">Prix total : <%= booking.total_price %>€</h3>
-            <%= link_to "Supprimer ce booking", booking_path(booking),
-          data: {turbo_method: :delete, turbo_confirm: "êtes vous sûr?"}, class: 'btn btn-secondary position-absolute', style: 'opacity: 0.9; top: 115px; right: 20px;'%>
-                </div>
-
-          </div>
-    </div>
-     <% end %>
+            <% end %>
+        </div>
+      <% end %>
 
      </div>
 
 
 
   <h4 class="my-3">Mes offres</h4>
-    <div class="cards">
-  <% @offers.each do |offer| %>
- <div class="card-offer position-relative">
-          <%= cl_image_tag offer.photo.key,
-          width: 400, height: 300, crop: :fill %>
-          <div class="card-offer-infos">
-            <div>
-                <h2><%= offer.name %> </h2>
-                <em><%= offer.category %></em>
-                <p><%= offer.description %></p>
-                <h3 class="card-offer-pricing"><%= offer.price_per_day %>€/jour</h3>
-            </div>
+  <div class="cards">
+    <% @offers.each do |offer| %>
+        <div class="card-offer position-relative">
+          <%= link_to offer_path(offer), id: "card-link" do %>
+            <%= cl_image_tag offer.photo.key, width: 450, height: 200, style: "object-fit: cover"%>
+            <div class="card-offer-infos">
+              <h3><%= truncate(offer.name, length: 40, separator: ' ', omission: '...') %></h3>
+              <em><h5><%= offer.category %></h5></em>
+              <p><%= truncate(offer.description, length: 40, separator: ' ', omission: '...') %></p>
+              </div>
+              <div class="card-offer-person">
+                  <h4 class="card-offer-pricing"><%= offer.price_per_day %> € /jour</h4>
+              </div>
+              <div class="position-absolute" style="top: 180px; right: 20px;">
+                <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
+              </div>
+          <% end %>
         </div>
-      </div>
-  <% end %>
+    <% end %>
   </div>
 
 
   <h4 class="my-3">Réservation en attente</h4>
    <div class="cards">
     <% @bookings_requests.each do |request| %>
-    <div class="card-offer position-relative">
-          <%= cl_image_tag request.offer.photo.key,
-          width: 400, height: 300, crop: :fill %>
-          <div class="card-offer-infos">
-            <div>
-                <h2><%= request.offer.name %> </h2>
-                <em><%= request.offer.category %></em>
-                <p><%= request.offer.description %></p>
-                <p><strong><%= request.start_date %> to <%= request.end_date %></strong></p>
-                <h3 class="card-offer-pricing"><%= request.offer.price_per_day %>€/jour</h3>
-            </div>
+      <div class="card-offer position-relative">
+        <%= cl_image_tag request.offer.photo.key,
+        width: 450, height: 200, style: "object-fit: cover"%>
+        <div class="card-offer-infos">
+          <div>
+            <h2><%= request.offer.name %> </h2>
+            <em><%= request.offer.category %></em>
+            <p><%= request.offer.description %></p>
+            <p><strong><%= request.start_date %> to <%= request.end_date %></strong></p>
+          </div>
         </div>
- <div class="position-absolute" style="top: 180px; right: 20px;">
-                <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
-              </div>
-        <div class="d-flex justify-content-around">
-        <button type="button" class="btn btn-secondary btn-sm"> Accepter </button>
-       <%= link_to "Refuser", booking_path(request), data: {turbo_method: :delete, turbo_confirm: "êtes vous sûr?"},  class: "btn btn-secondary btn-sm"%>
+        <div class="position-absolute" style="top: 180px; right: 20px;">
+          <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
         </div>
-    </div>
+        <div class="d-flex justify-content-around mt-3 mb-3">
+            <h4 class="card-offer-pricing"><%= request.offer.price_per_day %>€/jour</h4>
+          <button type="button" class="btn btn-secondary"> Accepter </button>
+          <%= link_to "Refuser", booking_path(request), data: {turbo_method: :delete, turbo_confirm: "êtes vous sûr?"},  class: "btn btn-secondary"%>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
