@@ -1,5 +1,5 @@
 <div class="container my-4">
-  <h2>MON TABLEAU DE BORD</h2>
+  <h1 class="text-center mb-5 mt-5">Mon tableau de bord</h1>
 
   <h4>Mes réservations</h4>
 
@@ -8,7 +8,7 @@
 
         <div class="card-offer position-relative">
           <%= cl_image_tag booking.offer.photo.key,
-          width: 400, height: 300, crop: :fill %>
+          width: 400, height: 300, style: "object-fit: cover" %>
            <div class="position-absolute" style="top: 180px; right: 20px;">
                 <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
               </div>
