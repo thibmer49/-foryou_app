@@ -3,35 +3,43 @@
 
   <h4>Mes réservations</h4>
 
-    <% @bookings.each do |booking| %>
-      <div class="card-offer mb-5">
+    <div class="cards">
+      <% @bookings.each do |booking| %>
+
+        <div class="card-offer position-relative">
           <%= cl_image_tag booking.offer.photo.key,
           width: 400, height: 300, crop: :fill %>
+           <div class="position-absolute" style="top: 180px; right: 20px;">
+                <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
+              </div>
+
           <div class="card-offer-infos">
+
             <div>
                 <h2><%= booking.offer.name %> </h2>
                 <em><%= booking.offer.category %></em>
                 <p><%= booking.offer.description %></p>
-                <p><strong><%= booking.start_date %> to <%= booking.end_date %></strong></p>
-                <h3 class="card-offer-pricing"><%= booking.offer.price_per_day %>€</h3>
+                <p><strong>du <%= booking.start_date %> au <%= booking.end_date %></strong></p>
+                <h3 class="card-offer-pricing">Prix total : <%= booking.total_price %>€</h3>
             </div>
 
                 <div class="d-flex justify-content-end">
            <%= link_to "Supprimer ce booking", booking_path(booking),
           data: {turbo_method: :delete, turbo_confirm: "êtes vous sûr?"}, class: 'btn btn-secondary', style: 'opacity: 0.9'%>
+                </div>
+
           </div>
+    </div>
+     <% end %>
 
-          <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
-        </div>
-      </div>
-    <% end %>
-
+     </div>
 
 
 
   <h4 class="my-3">Mes offres</h4>
+    <div class="cards">
   <% @offers.each do |offer| %>
-    <div class="card-offer mb-5">
+ <div class="card-offer position-relative">
           <%= cl_image_tag offer.photo.key,
           width: 400, height: 300, crop: :fill %>
           <div class="card-offer-infos">
@@ -39,18 +47,18 @@
                 <h2><%= offer.name %> </h2>
                 <em><%= offer.category %></em>
                 <p><%= offer.description %></p>
-                <h3 class="card-offer-pricing"><%= offer.price_per_day %>€</h3>
+                <h3 class="card-offer-pricing"><%= offer.price_per_day %>€/jour</h3>
             </div>
-          <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
         </div>
       </div>
   <% end %>
+  </div>
 
 
   <h4 class="my-3">Réservation en attente</h4>
    <div class="cards">
     <% @bookings_requests.each do |request| %>
-    <div class="card-offer">
+    <div class="card-offer position-relative">
           <%= cl_image_tag request.offer.photo.key,
           width: 400, height: 300, crop: :fill %>
           <div class="card-offer-infos">
@@ -59,13 +67,16 @@
                 <em><%= request.offer.category %></em>
                 <p><%= request.offer.description %></p>
                 <p><strong><%= request.start_date %> to <%= request.end_date %></strong></p>
-                <h3 class="card-offer-pricing"><%= request.offer.price_per_day %>€</h3>
+                <h3 class="card-offer-pricing"><%= request.offer.price_per_day %>€/jour</h3>
             </div>
-          <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
         </div>
-        <button class="btn btn-secondary">Accepter la réservation</button>
-        <button class="btn btn-secondary"><%= link_to "Supprimer l'offre", booking_path(request),
-          data: {turbo_method: :delete, turbo_confirm: "êtes vous sûr?"} %></button>
+ <div class="position-absolute" style="top: 180px; right: 20px;">
+                <img src="<%= Faker::Avatar.image%>" class="card-trip-user avatar-bordered" />
+              </div>
+        <div class="d-flex justify-content-around">
+        <button type="button" class="btn btn-secondary btn-sm"> Accepter </button>
+       <%= link_to "Refuser", booking_path(request), data: {turbo_method: :delete, turbo_confirm: "êtes vous sûr?"},  class: "btn btn-secondary btn-sm"%>
+        </div>
     </div>
     <% end %>
   </div>
