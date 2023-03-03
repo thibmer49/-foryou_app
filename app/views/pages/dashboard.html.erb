@@ -19,11 +19,8 @@
                 <h2><%= booking.offer.name %> </h2>
                 <em><%= booking.offer.category %></em>
                 <p><%= booking.offer.description %></p>
-                <p><strong><%= booking.start_date %> to <%= booking.end_date %></strong></p>
-                 <div class="card-offer-person">
-                 <h4 class="card-offer-pricing"><%= booking.offer.price_per_day %> €/jour </h4>
-              </div>
-
+                <p><strong>du <%= booking.start_date %> au <%= booking.end_date %></strong></p>
+                <h3 class="card-offer-pricing">Prix total : <%= booking.total_price %>€</h3>
             </div>
 
                 <div class="d-flex justify-content-end">

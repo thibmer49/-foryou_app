@@ -15,6 +15,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.offer = @offer
+    @booking.total_price = (@booking.end_date - @booking.start_date).to_i * @offer.price_per_day
     authorize @booking
     if @booking.save
       redirect_to dashboard_path
@@ -36,6 +37,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :offer_id)
+    params.require(:booking).permit(:start_date, :end_date, :offer_id, :start_date, :end_date, :duration)
   end
 end
