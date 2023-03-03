@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.offer = @offer
-    @booking.total_price = (@booking.end_date - @booking.start_date).to_i * @offer.price_per_day
+    @booking.total_price = (@booking.end_date - @booking.start_date + 1).to_i * @offer.price_per_day
     authorize @booking
     if @booking.save
       redirect_to dashboard_path
