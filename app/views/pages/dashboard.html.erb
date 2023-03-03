@@ -1,7 +1,7 @@
 <div class="container my-4">
-  <h1>MON TABLEAU DE BORD</h1>
+  <h2>MON TABLEAU DE BORD</h2>
 
-  <h3>Bookings</h3>
+  <h4>Mes réservations</h4>
 
     <% @bookings.each do |booking| %>
       <div class="card-offer mb-5">
@@ -29,7 +29,7 @@
 
 
 
-  <h3 class="my-3">Offers</h3>
+  <h4 class="my-3">Mes offres</h4>
   <% @offers.each do |offer| %>
     <div class="card-offer mb-5">
           <%= cl_image_tag offer.photo.key,
@@ -47,7 +47,7 @@
   <% end %>
 
 
-  <h3 class="my-3">Réservation en attente</h3>
+  <h4 class="my-3">Réservation en attente</h4>
    <div class="cards">
     <% @bookings_requests.each do |request| %>
     <div class="card-offer">
