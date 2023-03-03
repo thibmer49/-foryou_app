@@ -27,15 +27,74 @@ end
 
 puts "Database cleaned"
 
-12.times do
-  Offer.create!(
+Offer.create!(
     user: User.all.sample,
-    price_per_day: rand(10..100),
-    description: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
-    address: "16 villa Gaudelet",
-    category: Offer::CATEGORY.sample,
-    name: Faker::Lorem.sentence
-  )
-  puts "1 offer created"
+    price_per_day: 26
+    description: "Passionné de mécanique et de tunning, je répare votre voiture
+    en respectant la mécanique. Mercedes, BMW, avec moi, votre voiture c'est du Fast & Furious !",
+    address: "15, Avenue Félix d'Hérelle, 75016 PARIS",
+    category: "Réparation/Entretien",
+    name: "Lopez, réparateur de voiture de père en fils"
+)
+
+Offer.create!(
+    user: User.all.sample,
+    price_per_day: 76
+    description: "Après plusieurs années à avoir animé une émission sur les
+    plantes et les jardins, je mets à contribution mes connaissances dans la
+    construction de vos potagers et de vos serres.",
+    address: "16, Villa Gaudelet 75011 PARIS",
+    category: "Jardin/Extérieur",
+    name: "Silence ça pousse !"
+)
+Offer.create!(
+    user: User.all.sample,
+    price_per_day: 49
+    description: "J'aime m'occuper d'enfant depuis le plus jeune âge !
+    Jeux, créativité, éducation, votre enfant est entre de bonnes mains.",
+    address: "11, rue Adolphe Mille 75019 PARIS",
+    category: "Baby-sitting/Garde d'enfants",
+    name: "CATHY NOUNOU"
+)
+
+Offer.create!(
+    user: User.all.sample,
+    price_per_day: 51
+    description: "Je me suis pris de passion pour la décoration. Je m'appelle Valérie et je rénove votre intérieur !",
+    address: "65, Avenue de la République PARIS",
+    category: "Maison/Décoration",
+    name: "Envie d'un nouvel intérieur ?"
+)
+Offer.create!(
+    user: User.all.sample,
+    price_per_day: 76
+    description: "VOUS EN AVEZ MARRE DE VOTRE TOUTOU ? VOUS PERDEZ PATIENCE ?
+    Avec moi, Pascal, je rééduque votre chien et je m'en occupe quand vous n'êtes pas là !",
+    address: "13, Rue Saint-Maur 75011 PARIS",
+    category: "Dog-sitting/Garde d'animaux",
+    name: "Votre chien : mon ami !"
+)
+
+Offer.create!(
+    user: User.all.sample,
+    price_per_day: 76
+    description: "Vous avez zéro budget pour le plus beau jour de votre vie ?
+    Pourtant vous souhaitez avoir le mariage de vos rêves ? Nous jeune groupe de musique,
+    nous animons votre mariage pour un petit budget mais en échange de publicité !
+    Reggae, Pop-Rock, Opéra, nous nous adaptons à votre demande",
+    address: "55 rue du Faubourg Saint-Honoré, PARIS",
+    category: "Dog-sitting/Garde d'animaux",
+    name: "Les Vedettes : vos sauveurs pour événements !"
+)
+Offer.create!(
+    user: User.all.sample,
+    price_per_day: 120
+    description: "J'aime quand y'a du croquant, et quand c'est bon. Vous voulez impressionner vos convives ?
+    Je propose une cuisine colorée et locale !",
+    address: "36 Avenue du 8 mai, 49290 CHALONNES-SUR-LOIRE",
+    category: "Traiteur/Service à table",
+    name: "Je rajoute du croquant dans votre assiette"
+)
+
 end
 puts "Offers created"
