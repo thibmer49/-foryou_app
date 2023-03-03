@@ -7,11 +7,11 @@
 
 <div class="container">
   <div class="bookings_show d-flex my-5">
-    <div>
+    <div class="w-25 p-2">
       <h3><strong>Je vous propose:</strong><h3>
       <h6> <strong>Description:</strong> <%= @offer.description %></h6>
       <h6><strong>Adresse:</strong> <%= @offer.address %></h6>
-      <h6><strong>Prix:</strong> <%= @offer.price_per_day %> €</h6>
+      <h6><strong>Prix par jour:</strong> <%= @offer.price_per_day %> €</h6>
     </div>
 
     <div class="justify-content-center mx-3" id="map">

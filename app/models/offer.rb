@@ -35,11 +35,11 @@ class Offer < ApplicationRecord
     else
     category_images = {
       CATEGORY[0] => 'babysitting.jpg',
-      CATEGORY[1] => 'menage.jpg',
+      CATEGORY[1] => 'maison2.jpeg',
       CATEGORY[2] => 'reparation.jpg',
       CATEGORY[3] => 'dog.jpg',
       CATEGORY[4] => 'jardin.png',
-      CATEGORY[5] => 'animation.jpg',
+      CATEGORY[5] => 'animation2.jpeg',
       CATEGORY[6] => 'traiteur.jpg'
     }
 
